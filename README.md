@@ -1,5 +1,11 @@
 # Droid Socket Finder
-Android application to local socket mapper Python script
+A Python script for mapping local sockets to their corresponding processes. 
+
+## Setup
+
+* Create a ```bin``` directory underneath the root folder and drop in ```adb```
+* Use PIP to install the required packages
+
 ## Usage
 ```python 
 ```
