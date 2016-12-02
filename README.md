@@ -8,4 +8,5 @@ A Python script for mapping local sockets to their corresponding processes.  I b
 
 ## Usage
 ```python 
+python run.py
 ```
