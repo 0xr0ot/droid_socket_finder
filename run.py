@@ -55,22 +55,22 @@ def finder():
     pattern = re.compile("^Proto")
     # Get netstat result
     netstat = cmd("netstat | grep -Ei 'listen|udp*'")
-
     print(t.yellow("[{}] Running search ...".format(datetime.now())))
-    for line in netstat.split("\r\n"):
-        if line and pattern.match(line) == None:
-            socket = line.split()
-            protocol = socket[0]
-            port = socket[3].split(':')[-1]
-            if protocol and port:
-                app = cmd("grep {} /proc/net/{}".format(to_hex(port), protocol))
-                uid = process_uid(protocol, app)
-                if uid == -1:
-                    continue
-                application_list = cmd("ps | grep '{}' ".format(uid)).split()
-                app = application_list[8]
-                apps.append(app)
-                stripped.append(line)
+    if netstat:
+        for line in netstat.split("\r\n"):
+            if line and pattern.match(line) == None:
+                socket = line.split()
+                protocol = socket[0]
+                port = socket[3].split(':')[-1]
+                if protocol and port:
+                    app = cmd("grep {} /proc/net/{}".format(to_hex(port), protocol))
+                    uid = process_uid(protocol, app)
+                    if uid == -1:
+                        continue
+                    application_list = cmd("ps | grep '{}' ".format(uid)).split()
+                    app = application_list[8]
+                    apps.append(app)
+                    stripped.append(line)
     # Build apps and lines
     iterated_apps = iter(apps)
     iterated_lines = iter(stripped)
