@@ -10,6 +10,7 @@ t = Terminal()
 root = os.path.dirname(os.path.realpath(__file__))
 adb = "".join([root, "/bin/adb"])
 
+
 def cmd(args):
     """
     Execute adb commands
@@ -22,6 +23,7 @@ def cmd(args):
     except Exception as e:
         raise e
     return
+
 
 def process_uid(protocol, entry):
     """
@@ -44,6 +46,7 @@ def to_hex(p):
     """
     h = str(hex(int(p)))
     return h.strip('0x').upper()
+
 
 def finder():
     """
@@ -75,16 +78,14 @@ def finder():
     # Build apps and lines
     iterated_apps = iter(apps)
     iterated_lines = iter(stripped)
-
+    # If we have results, print them out
     try:
         while True:
             print(t.yellow("-" * 150))
             for i in range(0, len(apps)):
                 print(t.yellow("[{}] {}\t\t{}".format(i, iterated_apps.next(), iterated_lines.next())))
-            #print(t.magenta("{}\t{}".format(iterated_apps.next(), iterated_lines.next().split())))
     except StopIteration:
         pass
-
 
 
 if __name__ == "__main__":
