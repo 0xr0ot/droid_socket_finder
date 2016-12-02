@@ -1,2 +1,2 @@
-# droid_socket_finder
+# Droid Socket Finder
 Android application to local socket mapper Python script
