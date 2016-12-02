@@ -10,3 +10,9 @@ A Python script for mapping local sockets to their corresponding processes.  I b
 ```python 
 python run.py
 ```
+## Example Output
+```
+[2016-12-02 09:34:15.594185] Running search ...
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[0] com.google.android.youtube		tcp6       0      0 ::ffff:127.0.0.1:38052 :::*                   LISTEN
+```
